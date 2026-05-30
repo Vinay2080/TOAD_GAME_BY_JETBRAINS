@@ -1,15 +1,8 @@
 import * as THREE from 'three';
 
-export const COLLISION_DISTANCE = 40;
+export const COLLISION_DISTANCE = 5;
 
-export function isCollision(objectA, objectB, distance = COLLISION_DISTANCE) {
-  if (!objectA || !objectB) {
-    return false;
-  }
-
-  const positionA = objectA.position ?? new THREE.Vector3();
-  const positionB = objectB.position ?? new THREE.Vector3();
-
-  return positionA.distanceTo(positionB) <= distance;
+export function checkCollision(pos1, radius1, pos2, radius2) {
+    const dist = pos1.distanceTo(pos2);
+    return dist < (radius1 + radius2 + COLLISION_DISTANCE);
 }
-
